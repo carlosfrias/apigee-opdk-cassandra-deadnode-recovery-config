@@ -1,10 +1,5 @@
 ---
 # tasks file for /usr/local/google/home/friasc/apigee-workspace/apigee-opdk-role-workspace/apigee-opdk-cassandra-recover-deadnode
-- name: Validate that deadnode has been provided
-  fail:
-    msg: "Please provide the address of the dead Cassandra node"
-  when: deadnode is not defined
-
 - name: Update defaults.sh with replace_address option for Cassandra
   lineinfile:
     create: yes
@@ -13,7 +8,7 @@
     mode: 0644
     state: present
     regexp: "^{{ item }}"
-    line: '{{ item }}={{ deadnode }}" '
+    line: '{{ item }}={{ inventory_hostname }}" '
     dest: "{{ apigee_installation_home }}/etc/defaults.sh"
   with_items:
   - 'JVM_OPTS="$JVM_OPTS -Dcassandra.replace_address'
