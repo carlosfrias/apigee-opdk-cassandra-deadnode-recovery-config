@@ -8,7 +8,7 @@
     mode: 0644
     state: present
     regexp: "^{{ item }}"
-    line: '{{ item }}={{ inventory_hostname }}"'
+    line: '{{ item }}={{ local_address }}"'
     dest: "{{ apigee_installation_home }}/etc/defaults.sh"
   with_items:
   - 'JVM_OPTS="$JVM_OPTS -Dcassandra.replace_address'
