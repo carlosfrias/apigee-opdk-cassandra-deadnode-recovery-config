@@ -13,7 +13,7 @@
   with_items:
   - 'JVM_OPTS="$JVM_OPTS -Dcassandra.replace_address'
 
-- name: Remove Cassandra data
+- name: Remove Cassandra data folder
   file:
     path: "{{ apigee_installation_home }}/data/apigee-cassandra"
     state: absent
